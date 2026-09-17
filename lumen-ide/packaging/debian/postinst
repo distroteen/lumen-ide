@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+# Recompila os schemas do GSettings e atualiza o cache de ícones/desktop.
+# Nenhum destes comandos requer privilégios além dos que o próprio dpkg
+# já executa; nada é baixado da rede.
+
+if [ -x /usr/bin/glib-compile-schemas ]; then
+    glib-compile-schemas /usr/share/glib-2.0/schemas || true
+fi
+
+if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor || true
+fi
+
+if [ -x /usr/bin/update-desktop-database ]; then
+    update-desktop-database -q /usr/share/applications || true
+fi
+
+exit 0

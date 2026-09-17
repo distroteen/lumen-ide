@@ -1,0 +1,55 @@
+# Maintainer: Lumen IDE Contributors <noreply@example.com>
+#
+# Este PKGBUILD builda diretamente a partir do checkout git já clonado
+# (fluxo documentado no README: git clone + cd packaging/arch + makepkg -si).
+# Não depende de nenhum tarball remoto — $startdir/../.. é a raiz do repo.
+
+pkgname=lumen-ide
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Interpretador, IDE e compilador multi-linguagem com design moderno"
+arch=('any')
+url="https://github.com/"
+license=('MIT')
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'gtksourceview5')
+optdepends=(
+  'gcc: suporte a C/C++'
+  'rust: suporte a Rust'
+  'go: suporte a Go'
+  'nodejs: suporte a JavaScript/TypeScript'
+  'jdk-openjdk: suporte a Java'
+  'ruby: suporte a Ruby'
+  'php: suporte a PHP'
+  'lua: suporte a Lua'
+  'perl: suporte a Perl'
+  'kotlin: suporte a Kotlin'
+)
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+# Sem source/sha256sums: o pacote é buildado a partir da árvore de arquivos
+# local (o repositório git já clonado), não de um tarball baixado.
+source=()
+sha256sums=()
+
+_repo_root() {
+  cd "$startdir/../.."
+  pwd
+}
+
+build() {
+  cd "$(_repo_root)"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  local root
+  root="$(_repo_root)"
+  cd "$root"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 data/com.lumen.ide.desktop "$pkgdir/usr/share/applications/com.lumen.ide.desktop"
+  install -Dm644 data/com.lumen.ide.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.lumen.ide.svg"
+  install -Dm644 data/com.lumen.ide.appdata.xml "$pkgdir/usr/share/metainfo/com.lumen.ide.appdata.xml"
+  install -Dm644 lumen/resources/com.lumen.ide.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/com.lumen.ide.gschema.xml"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

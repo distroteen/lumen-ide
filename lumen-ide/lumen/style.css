@@ -1,0 +1,194 @@
+/*
+ * Lumen IDE — style.css
+ * Camada de refinamento visual sobre o libadwaita, buscando a clareza,
+ * profundidade sutil e tipografia da linguagem de design da Apple,
+ * mantendo-se 100% nativo em GTK4 (funciona em GNOME e Hyprland).
+ */
+
+:root {
+  --lumen-radius-lg: 14px;
+  --lumen-radius-md: 10px;
+  --lumen-radius-sm: 7px;
+  --lumen-accent: #0a84ff;
+  --lumen-accent-soft: alpha(#0a84ff, 0.12);
+  --lumen-shadow-color: alpha(#000000, 0.18);
+}
+
+/* Tipografia geral: prioriza fontes de UI limpas, com fallback seguro */
+window,
+.lumen-font {
+  font-family: "Inter", "SF Pro Display", "Segoe UI", "Cantarell", sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  letter-spacing: 0.1px;
+}
+
+/* Header bar translúcida e com cantos combinando com a janela */
+headerbar {
+  border-radius: var(--lumen-radius-lg) var(--lumen-radius-lg) 0 0;
+  background: alpha(@window_bg_color, 0.86);
+  box-shadow: none;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+headerbar.lumen-traffic-lights {
+  padding-left: 12px;
+}
+
+/* Botões de "tráfego" estilo macOS (opcional, ativável nas Preferências) */
+.lumen-traffic-light {
+  min-width: 12px;
+  min-height: 12px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0 4px;
+  border: none;
+}
+.lumen-traffic-light.close { background-color: #ff5f57; }
+.lumen-traffic-light.minimize { background-color: #febc2e; }
+.lumen-traffic-light.maximize { background-color: #28c840; }
+.lumen-traffic-light:hover { filter: brightness(1.08); }
+
+/* Sidebar */
+.lumen-sidebar {
+  background: alpha(@window_bg_color, 0.55);
+  border-radius: 0 0 0 var(--lumen-radius-lg);
+}
+
+.lumen-sidebar row {
+  border-radius: var(--lumen-radius-sm);
+  margin: 1px 6px;
+  padding: 6px 8px;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.lumen-sidebar row:selected {
+  background-color: var(--lumen-accent-soft);
+  color: var(--lumen-accent);
+  font-weight: 600;
+}
+
+.lumen-sidebar row:hover {
+  background-color: alpha(currentColor, 0.06);
+}
+
+/* Cartões / painéis com profundidade sutil, estilo "vidro" */
+.lumen-card {
+  background: alpha(@window_bg_color, 0.9);
+  border-radius: var(--lumen-radius-lg);
+  box-shadow: 0 6px 24px var(--lumen-shadow-color);
+  border: 1px solid alpha(currentColor, 0.06);
+}
+
+/* Abas do editor */
+tabbar {
+  background: transparent;
+  padding: 4px 8px;
+}
+
+tabbar tab {
+  border-radius: var(--lumen-radius-md);
+  margin: 2px 3px;
+  transition: background-color 160ms ease, transform 120ms ease;
+}
+
+tabbar tab:selected {
+  background: alpha(@window_bg_color, 1);
+  box-shadow: 0 2px 8px alpha(#000000, 0.10);
+}
+
+tabbar tab:hover {
+  background: alpha(currentColor, 0.05);
+}
+
+/* Área de edição de código */
+.lumen-editor {
+  border-radius: 0;
+  padding: 4px 2px;
+}
+
+.lumen-editor text {
+  background-color: transparent;
+  caret-color: var(--lumen-accent);
+}
+
+/* Painel de terminal/saída */
+.lumen-terminal {
+  background: shade(@window_bg_color, 0.94);
+  border-radius: var(--lumen-radius-lg);
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  padding: 10px 12px;
+}
+
+.lumen-terminal.stderr-line {
+  color: #ff6b6b;
+}
+
+/* Botão de execução em destaque */
+.lumen-run-button {
+  border-radius: var(--lumen-radius-md);
+  background: linear-gradient(180deg, #34c759, #2bb14f);
+  color: white;
+  font-weight: 600;
+  padding: 6px 16px;
+  box-shadow: 0 2px 10px alpha(#28c840, 0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.lumen-run-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px alpha(#28c840, 0.45);
+}
+.lumen-run-button:active {
+  transform: translateY(0);
+}
+
+/* Badge de status de linguagem detectada */
+.lumen-lang-badge {
+  border-radius: 999px;
+  padding: 2px 10px;
+  background: var(--lumen-accent-soft);
+  color: var(--lumen-accent);
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.lumen-lang-badge.unavailable {
+  background: alpha(#ff9500, 0.15);
+  color: #ff9500;
+}
+
+/* Paleta de comandos estilo Spotlight */
+.lumen-command-palette {
+  border-radius: var(--lumen-radius-lg);
+  box-shadow: 0 20px 60px alpha(#000000, 0.35);
+  padding: 6px;
+}
+
+.lumen-command-palette entry {
+  border-radius: var(--lumen-radius-md);
+  font-size: 1.1em;
+  padding: 10px 14px;
+  background: alpha(currentColor, 0.04);
+  border: none;
+}
+
+.lumen-command-palette list row {
+  border-radius: var(--lumen-radius-sm);
+  padding: 8px 10px;
+  margin: 1px 4px;
+}
+
+.lumen-command-palette list row:selected {
+  background-color: var(--lumen-accent-soft);
+}
+
+/* Scrollbars discretas */
+scrollbar slider {
+  border-radius: 999px;
+  min-width: 6px;
+  min-height: 6px;
+  background-color: alpha(currentColor, 0.25);
+}
+scrollbar slider:hover {
+  background-color: alpha(currentColor, 0.4);
+}

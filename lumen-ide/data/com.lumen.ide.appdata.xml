@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.lumen.ide</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Lumen IDE</name>
+  <summary>Interpretador, IDE e compilador multi-linguagem com design moderno</summary>
+  <description>
+    <p>
+      Lumen IDE é um editor de código nativo para Linux, construído com GTK4
+      e libadwaita, com uma interface extremamente moderna inspirada no
+      design da Apple. Suporta Python, JavaScript, TypeScript, C, C++, Rust,
+      Go, Java, C#, Ruby, PHP, Lua, Perl, Bash e Kotlin, detectando
+      automaticamente as ferramentas já instaladas no sistema.
+    </p>
+    <p>
+      Roda inteiramente offline e localmente, com foco em performance,
+      segurança e integração perfeita com GNOME e Hyprland.
+    </p>
+  </description>
+  <launchable type="desktop-id">com.lumen.ide.desktop</launchable>
+  <url type="homepage">https://github.com/</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.0" date="2026-09-16">
+      <description>
+        <p>Primeira versão pública do Lumen IDE.</p>
+      </description>
+    </release>
+  </releases>
+</component>

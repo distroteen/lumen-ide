@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="com.lumen.ide" path="/com/lumen/ide/">
+    <key name="traffic-lights" type="b">
+      <default>false</default>
+      <summary>Botões de tráfego estilo macOS</summary>
+      <description>
+        Exibe fechar/minimizar/maximizar como círculos coloridos à
+        esquerda da barra de título, no estilo do macOS.
+      </description>
+    </key>
+    <key name="font-size" type="i">
+      <default>13</default>
+      <range min="9" max="24"/>
+      <summary>Tamanho da fonte do editor</summary>
+    </key>
+    <key name="theme-variant" type="s">
+      <default>'system'</default>
+      <summary>Variante de tema (system, light, dark)</summary>
+    </key>
+  </schema>
+</schemalist>

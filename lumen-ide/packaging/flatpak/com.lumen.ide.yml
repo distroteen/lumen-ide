@@ -1,0 +1,30 @@
+app-id: com.lumen.ide
+runtime: org.gnome.Platform
+runtime-version: "46"
+sdk: org.gnome.Sdk
+command: lumen-ide
+
+finish-args:
+  # Necessário apenas para desenhar a janela (Wayland/X11 fallback)
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  # Acesso ao sistema de arquivos do usuário para abrir/salvar projetos
+  # (o usuário escolhe explicitamente as pastas via portal de arquivos)
+  - --filesystem=home
+  # Necessário para localizar e chamar compiladores/interpretadores
+  # instalados no sistema host (python3, gcc, node, etc.)
+  - --talk-name=org.freedesktop.Flatpak
+
+modules:
+  - name: lumen-ide
+    buildsystem: simple
+    build-commands:
+      - pip3 install --prefix=/app --no-deps .
+      - install -Dm644 data/com.lumen.ide.desktop /app/share/applications/com.lumen.ide.desktop
+      - install -Dm644 data/com.lumen.ide.svg /app/share/icons/hicolor/scalable/apps/com.lumen.ide.svg
+      - install -Dm644 data/com.lumen.ide.appdata.xml /app/share/metainfo/com.lumen.ide.appdata.xml
+      - install -Dm644 lumen/resources/com.lumen.ide.gschema.xml /app/share/glib-2.0/schemas/com.lumen.ide.gschema.xml
+    sources:
+      - type: dir
+        path: ../../

@@ -1,0 +1,24 @@
+Source: lumen-ide
+Section: devel
+Priority: optional
+Maintainer: Lumen IDE Contributors <noreply@example.com>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools
+Standards-Version: 4.6.2
+Homepage: https://github.com/
+Rules-Requires-Root: no
+
+Package: lumen-ide
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends},
+ gir1.2-gtk-4.0,
+ gir1.2-adw-1,
+ gir1.2-gtksource-5,
+ python3-gi,
+ python3 (>= 3.11)
+Recommends: gcc, g++, python3, nodejs
+Description: Interpretador, IDE e compilador multi-linguagem com design moderno
+ Lumen IDE é um editor de código nativo para Linux (GTK4 + libadwaita)
+ com interface extremamente moderna inspirada no design da Apple.
+ Detecta automaticamente as toolchains instaladas e executa código em
+ Python, JavaScript, TypeScript, C, C++, Rust, Go, Java, C#, Ruby, PHP,
+ Lua, Perl, Bash e Kotlin, tudo rodando localmente, sem telemetria.

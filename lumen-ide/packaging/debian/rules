@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=lumen-ide
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_install:
+	dh_auto_install
+	install -Dm644 data/com.lumen.ide.desktop debian/lumen-ide/usr/share/applications/com.lumen.ide.desktop
+	install -Dm644 data/com.lumen.ide.svg debian/lumen-ide/usr/share/icons/hicolor/scalable/apps/com.lumen.ide.svg
+	install -Dm644 data/com.lumen.ide.appdata.xml debian/lumen-ide/usr/share/metainfo/com.lumen.ide.appdata.xml
+	install -Dm644 lumen/resources/com.lumen.ide.gschema.xml debian/lumen-ide/usr/share/glib-2.0/schemas/com.lumen.ide.gschema.xml
+
+override_dh_auto_test:
+	# Testes de UI exigem um display gráfico; pulados no build headless.

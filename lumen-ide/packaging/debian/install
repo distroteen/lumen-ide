@@ -1,0 +1,4 @@
+data/com.lumen.ide.desktop usr/share/applications
+data/com.lumen.ide.svg usr/share/icons/hicolor/scalable/apps
+data/com.lumen.ide.appdata.xml usr/share/metainfo
+lumen/resources/com.lumen.ide.gschema.xml usr/share/glib-2.0/schemas

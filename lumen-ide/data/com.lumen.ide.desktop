@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Lumen IDE
+GenericName=IDE Multi-linguagem
+Comment=Interpretador, IDE e compilador multi-linguagem com design moderno
+Comment[pt_BR]=Interpretador, IDE e compilador multi-linguagem com design moderno
+Exec=lumen-ide %F
+Icon=com.lumen.ide
+Terminal=false
+Categories=Development;IDE;TextEditor;
+StartupNotify=true
+StartupWMClass=com.lumen.ide
+Keywords=code;editor;ide;compiler;interpreter;programming;python;rust;go;
+MimeType=text/plain;text/x-python;text/x-csrc;text/x-c++src;application/javascript;
+X-GNOME-UsesNotifications=false
