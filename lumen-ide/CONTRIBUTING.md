@@ -9,7 +9,7 @@ Obrigado pelo interesse em contribuir! 🎉
 sudo dnf install python3 python3-gobject gtk4 libadwaita gtksourceview5
 
 # Clonar e instalar em modo editável
-git clone https://github.com/<seu-usuario>/lumen-ide.git
+git clone https://github.com/distroteen/lumen-ide.git
 cd lumen-ide
 
 # Em distros com Python "externally managed" (PEP 668 — Arch, Fedora
