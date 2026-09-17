@@ -27,7 +27,7 @@ Tudo roda 100% localmente na máquina do usuário — nenhum código é enviado 
 ### Instalador universal (recomendado)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<seu-usuario>/lumen-ide/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/distroteen/lumen-ide/main/scripts/install.sh | bash
 ```
 
 O script detecta automaticamente sua distribuição (`/etc/os-release`) e usa o gerenciador de pacotes correto (`apt`, `dnf` ou `pacman`) para instalar as dependências de sistema (GTK4, libadwaita, GtkSourceView5, Python 3.11+) e em seguida instala o Lumen IDE em `~/.local`.
@@ -53,8 +53,8 @@ Especificação em [`packaging/rpm/lumen-ide.spec`](packaging/rpm/lumen-ide.spec
 ### Arch / Manjaro (AUR / PKGBUILD)
 
 ```bash
-git clone https://github.com/<seu-usuario>/lumen-ide.git
-cd lumen-ide/packaging/arch
+git clone https://github.com/distroteen/lumen-ide.git
+cd lumen-ide/lumen-ide/packaging/arch
 makepkg -si
 ```
 
